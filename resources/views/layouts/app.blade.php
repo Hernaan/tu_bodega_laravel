@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
     <div id="app">
@@ -28,7 +29,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/') }}"><span class="glyphicon glyphicon-glass"></span>
                         Tu Bodega
                     </a>
                 </div>
@@ -41,18 +42,23 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+                        
                         <!-- Authentication Links -->
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Registro</a></li>
                         @else
+                            <li><a href=""><span class="glyphicon glyphicon-shopping-cart" style="font-size:16px;color:red;"></span>
+                                {{ $carrito->products_cantidad() }}
+                            </a>
+                        </li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Acciones
                                      <span class="caret"></span>
                                 </a>
                                  <ul class="dropdown-menu">
-                                    <li><a href="{{ url('/products') }}">Mostrar Productos</a></li>
-                                    <li><a href="{{ url('/products/create') }}">Agregar Productos</a></li>
+                                    <li><a href="{{ url('/products') }}"><span class="glyphicon glyphicon-copy" ></span> Mostrar Productos</a></li>
+                                    <li><a href="{{ url('/products/create') }}"><span class="glyphicon glyphicon-open-file"></span> Agregar Productos</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -67,7 +73,7 @@
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                                     <p class="text-danger">
+                                                     <p class="text-danger"><span class="glyphicon glyphicon-log-out"></span>
                                                          Cerrar Sesion
                                                     </p>
                                         </a>
@@ -90,5 +96,9 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.1.0.js"
+  integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="
+  crossorigin="anonymous"></script>
 </body>
 </html>

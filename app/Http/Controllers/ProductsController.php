@@ -28,7 +28,8 @@ class ProductsController extends Controller
     public function create()
     {
         //Formulario para agregar productos
-        return view('products.create');
+        $product = new Product;
+        return view('products.create',['product'=>$product]);
     }
 
     /**
@@ -50,7 +51,8 @@ class ProductsController extends Controller
             return redirect('/products');
             
         }else{
-            return view('products.create');
+            return view("products.create", ["product" => $product]);
+            //["product" => $product] sirve para no borrar datos completados cuando se completo mal el formulario
             
         }
        
@@ -67,7 +69,9 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        //metodo para mostrar producto unico
+        $product = Product::find($id);
+        return view('products.show', ['product' => $product]);
     }
 
     /**
@@ -78,7 +82,9 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        //Formulario para editar los productos
+        $product = Product::find($id);
+        return view('products.edit',['product'=>$product]);
     }
 
     /**
@@ -90,7 +96,21 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Metodo para editar los productos
+        $product = Product::find($id);
+        $product->product_name = $request->product_name;
+        $product->description = $request->description;
+        $product->precio = $request->precio;
+        
+
+        if($product->save()){
+            return redirect('/products');
+            
+        }else{
+            return view("products.edit", ["product" => $product]);
+            
+        }
+
     }
 
     /**
@@ -101,6 +121,9 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //metodo para eliminar el producto
+        Product::destroy($id);
+        return redirect('/products');
+
     }
 }

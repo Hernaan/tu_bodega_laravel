@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
 //controlador de la pagina de inicio
 class MainController extends Controller
 {
     //
     public function home(){
-    	return view('main.home',[]);
+
+    	return view('main.home');
     }
 }
 	

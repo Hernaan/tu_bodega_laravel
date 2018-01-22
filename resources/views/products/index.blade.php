@@ -12,7 +12,8 @@
 				<td class="success">Nombre del Producto</td>
 				<td class="success">Descripcion</td>
 				<td class="success">Precio</td>
-				<td class="success">Acciones</td>
+				<td class="success">Accion</td>
+				<td class="success">Accion</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -22,7 +23,13 @@
 				<td>{{ $product->product_name}}</td>
 				<td>{{ $product->description }}</td>
 				<td>{{ $product->precio }}</td>
-				<td>Acciones</td>
+				<td>
+					<a href="{{ url('/products/'.$product->id.'/edit') }}"> <span class="glyphicon glyphicon-edit"></span> Editar</a>
+					
+				</td>
+				<td>
+					@include('products.delete', ['product' => $product])
+				</td>
 			</tr>
 			@endforeach
 		</tbody>
@@ -30,7 +37,7 @@
 </div>
 <div class="absolute text-center">
 	<a href="{{ url('/products/create') }}" class="btn btn-primary">
-		<i>Agregar nuevo producto</i>
+		<span class="glyphicon glyphicon-open"></span><i> Agregar nuevo producto</i>
 	</a>
 </div>
 @endsection
