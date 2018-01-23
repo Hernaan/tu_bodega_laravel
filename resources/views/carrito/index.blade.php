@@ -19,14 +19,16 @@
 			</tr>
 		@endforeach
 			<tr>
-				<td class="danger">Total</td>
-				<td class="danger">{{ $total }}</td>
+				<td class="danger"><strong>Total</strong></td>
+				<td class="danger"><strong>{{ $total }}</strong></td>
 			</tr>
 			</tbody>
 	</table>
 	</div>
 </div>
 <div class="container">
-	<a href="{{ url('/products') }}">Seguir Comprando</a>
+	<a href="{{ url('/') }}">Seguir Comprando</a>
+	<div class="pull-right"><input type="submit" class="btn btn-success" value="Realizar pedido"></div>
+
 </div>
 @endsection
