@@ -7,7 +7,7 @@
   		<hr class="my-4">
   		<p>{{ $product->description }}</p>
   		<p class="lead">
-  			<a class="btn btn-success btn-lg" href="#" role="button">Agregar al carrito</a>
+  			@include('carrito_products.form', ['product' => $product])
   		</p>
 	</div>
 </div>

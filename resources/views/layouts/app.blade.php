@@ -48,7 +48,7 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Registro</a></li>
                         @else
-                            <li><a href=""><span class="glyphicon glyphicon-shopping-cart" style="font-size:16px;color:red;"></span>
+                            <li><a href="{{ url('/carrito') }}"><span class="glyphicon glyphicon-shopping-cart" style="font-size:16px;color:red;"></span>
                                 {{ $carrito->products_cantidad() }}
                             </a>
                         </li>

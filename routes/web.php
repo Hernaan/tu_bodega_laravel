@@ -12,9 +12,12 @@
 */
 
 Route::get('/', 'MainController@home');//ruta de la pagina de inicio
-
+Route::get('/carrito', 'CarritoController@index');
 Auth::routes();
-
+//rutas REST
 Route::resource('products', 'ProductsController');
+Route::resource('in_carrito_products', 'InCarritoProductsController', [
+	'only' => ['store', 'destroy']//solamente genera rutas para guardar y eliminar
+	]);
 
 Route::get('/home', 'HomeController@index')->name('home');
